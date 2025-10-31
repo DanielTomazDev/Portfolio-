@@ -61,10 +61,10 @@ export default function Hero({ currentLanguage }: HeroProps) {
            </div>
            
            <h1 className="hero-title text-2xl md:text-6xl text-white text-center md:text-left">
-            <span className="tipsy-title">
+            <span className="tipsy-title text-white">
               {currentContent.greeting}
             </span>
-          </h1>
+           </h1>
         </motion.div>
 
       </div>

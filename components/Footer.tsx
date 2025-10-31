@@ -9,20 +9,12 @@ interface FooterProps {
 export default function Footer({ currentLanguage }: FooterProps) {
   const content = {
     pt: {
-      copyright: '© 2025 Daniel Tomaz',
-      social: {
-        linkedin: 'LinkedIn',
-        github: 'GitHub',
-        twitter: 'Twitter'
-      }
+      copyright: '© 2025 Daniel Tomaz. Feito com paciência e muito café ☕',
+      license: 'Licença MIT'
     },
     en: {
-      copyright: '© 2024 Daniel Tomaz. Made with ❤️ and lots of coffee ☕',
-      social: {
-        linkedin: 'LinkedIn',
-        github: 'GitHub',
-        twitter: 'Twitter'
-      }
+      copyright: '© 2025 Daniel Tomaz. Crafted with patience and lots of coffee ☕',
+      license: 'MIT License'
     }
   }
 
@@ -42,35 +34,49 @@ export default function Footer({ currentLanguage }: FooterProps) {
             {currentContent.copyright}
           </p>
 
-          <div className="flex space-x-6">
-            <motion.a
-              href="#"
-              className="w-12 h-12 rounded-full flex items-center justify-center text-gray-400 hover:bg-netflix-red hover:text-white transition-all duration-300"
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label={currentContent.social.linkedin}
-            >
-              <i className="fab fa-linkedin text-xl" />
-            </motion.a>
+          <div className="flex flex-col md:flex-row items-center gap-4 text-gray-400">
+            <div className="flex space-x-6">
+              <motion.a
+                href="#"
+                className="w-12 h-12 rounded-full flex items-center justify-center text-gray-400 hover:bg-netflix-red hover:text-white transition-all duration-300"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="LinkedIn"
+              >
+                <i className="fab fa-linkedin text-xl" />
+              </motion.a>
+
+              <motion.a
+                href="#"
+                className="w-12 h-12 rounded-full flex items-center justify-center text-gray-400 hover:bg-netflix-red hover:text-white transition-all duration-300"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="GitHub"
+              >
+                <i className="fab fa-github text-xl" />
+              </motion.a>
+
+              <motion.a
+                href="#"
+                className="w-12 h-12 rounded-full flex items-center justify-center text-gray-400 hover:bg-netflix-red hover:text-white transition-all duration-300"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="Twitter"
+              >
+                <i className="fab fa-twitter text-xl" />
+              </motion.a>
+            </div>
 
             <motion.a
-              href="#"
-              className="w-12 h-12 rounded-full flex items-center justify-center text-gray-400 hover:bg-netflix-red hover:text-white transition-all duration-300"
-              whileHover={{ scale: 1.1, y: -2 }}
+              href="https://opensource.org/licenses/MIT"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm uppercase tracking-widest text-gray-400 hover:text-white transition-colors duration-300"
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              aria-label={currentContent.social.github}
             >
-              <i className="fab fa-github text-xl" />
-            </motion.a>
-
-            <motion.a
-              href="#"
-              className="w-12 h-12 rounded-full flex items-center justify-center text-gray-400 hover:bg-netflix-red hover:text-white transition-all duration-300"
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label={currentContent.social.twitter}
-            >
-              <i className="fab fa-twitter text-xl" />
+              <i className="fas fa-balance-scale" />
+              {currentContent.license}
             </motion.a>
           </div>
         </motion.div>
