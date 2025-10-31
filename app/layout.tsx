@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Daniel Tomaz - Portfolio',
   description: 'Portfolio de Daniel Tomaz - Apaixonado por criar experiências incríveis',
   keywords: 'desenvolvedor, full stack, portfolio, programação, web development',
-  author: 'Daniel Tomaz',
+  authors: [{ name: 'Daniel Tomaz' }],
 }
 
 export default function RootLayout({
