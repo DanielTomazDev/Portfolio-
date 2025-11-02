@@ -4,7 +4,7 @@ Bem-vindo ao meu portfólio!
 Sou **Daniel Tomaz**, Desenvolvedor Frontend apaixonado por transformar ideias em experiências digitais envolventes.
 
 O projeto está hospedado na **Vercel**.  
-🔗 [Acesse meu portfólio online]([https://seu-link-aqui.com](https://portfolio-alpha-seven-iose8ysygj.vercel.app))
+🔗 [Acesse meu portfólio online]([[https://seu-link-aqui.com](https://portfolio-alpha-seven-iose8ysygj.vercel.app)]
 
 ---
 
