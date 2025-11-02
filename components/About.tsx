@@ -12,7 +12,6 @@ type LanguageKey = 'pt' | 'en'
 
 type AboutContent = {
   title: string
-  label: string
   heading: ReactNode
   paragraphs: ReactNode[]
   badges: {
@@ -47,6 +46,7 @@ const content: Record<LanguageKey, AboutContent> = {
     badges: {
       top: 'Criatividade',
       bottom: 'Performance',
+      side: 'Inovação'
     }
   },
   en: {
@@ -72,7 +72,8 @@ const content: Record<LanguageKey, AboutContent> = {
     ],
     badges: {
       top: 'Creativity',
-      bottom: 'Logic',
+      bottom: 'Performance',
+      side: 'Innovation'
     }
   }
 }
@@ -98,9 +99,6 @@ export default function About({ currentLanguage }: AboutProps) {
           <h2 className="section-title mb-3">
             {currentContent.title}
           </h2>
-          <p className="text-primary-blue/80 uppercase tracking-[0.4em] text-xs font-semibold">
-            {currentContent.label}
-          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-16 items-center">
