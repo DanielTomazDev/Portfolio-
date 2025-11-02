@@ -108,13 +108,18 @@ export default function About({ currentLanguage }: AboutProps) {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <span className="absolute -top-8 right-1 text-white/70 text-[0.65rem] tracking-[0.4em] uppercase">
+            {/* Badge Superior */}
+            <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-white/70 text-[0.65rem] tracking-[0.4em] uppercase">
               {currentContent.badges.top}
             </span>
-            <span className="absolute bottom-6 -left-9 text-white/70 text-[0.65rem] tracking-[0.4em] uppercase rotate-90 origin-left">
+            
+            {/* Badge Esquerdo */}
+            <span className="absolute top-1/2 -left-12 -translate-y-1/2 text-white/70 text-[0.65rem] tracking-[0.4em] uppercase -rotate-90 origin-center">
               {currentContent.badges.bottom}
             </span>
-            <span className="absolute top-1/2 -right-10 -translate-y-1/2 text-white/70 text-[0.65rem] tracking-[0.4em] uppercase">
+            
+            {/* Badge Direito */}
+            <span className="absolute top-1/2 -right-12 -translate-y-1/2 text-white/70 text-[0.65rem] tracking-[0.4em] uppercase rotate-90 origin-center">
               {currentContent.badges.side}
             </span>
 
