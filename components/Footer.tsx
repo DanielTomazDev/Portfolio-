@@ -9,11 +9,11 @@ interface FooterProps {
 export default function Footer({ currentLanguage }: FooterProps) {
   const content = {
     pt: {
-      copyright: '© 2025 Daniel Tomaz. Feito com paciência e muito café ☕',
+      copyright: '© 2025 DanielTomazDev. All rights reserved.',
       license: 'Licença MIT'
     },
     en: {
-      copyright: '© 2025 Daniel Tomaz. Crafted with patience and lots of coffee ☕',
+      copyright: '© 2025 DanielTomazDev. All rights reserved.',
       license: 'MIT License'
     }
   }
@@ -35,36 +35,13 @@ export default function Footer({ currentLanguage }: FooterProps) {
           </p>
 
           <div className="flex flex-col md:flex-row items-center gap-4 text-gray-400">
+            {/* TODO: Atualizar os links das redes sociais com URLs reais */}
             <div className="flex space-x-6">
-              <motion.a
-                href="#"
-                className="w-12 h-12 rounded-full flex items-center justify-center text-gray-400 hover:bg-netflix-red hover:text-white transition-all duration-300"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="LinkedIn"
-              >
-                <i className="fab fa-linkedin text-xl" />
-              </motion.a>
+              
 
-              <motion.a
-                href="#"
-                className="w-12 h-12 rounded-full flex items-center justify-center text-gray-400 hover:bg-netflix-red hover:text-white transition-all duration-300"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="GitHub"
-              >
-                <i className="fab fa-github text-xl" />
-              </motion.a>
+              
 
-              <motion.a
-                href="#"
-                className="w-12 h-12 rounded-full flex items-center justify-center text-gray-400 hover:bg-netflix-red hover:text-white transition-all duration-300"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Twitter"
-              >
-                <i className="fab fa-twitter text-xl" />
-              </motion.a>
+              
             </div>
 
             <motion.a

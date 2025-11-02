@@ -10,6 +10,7 @@ import Projects from '@/components/Projects'
 import About from '@/components/About'
 import Skills from '@/components/Skills'
 import Contact from '@/components/Contact'
+import Footer from '@/components/Footer'
 
 export default function Home() {
   const [currentLanguage, setCurrentLanguage] = useState('pt')
@@ -49,6 +50,7 @@ export default function Home() {
       <About currentLanguage={currentLanguage} />
       <Skills currentLanguage={currentLanguage} />
       <Contact currentLanguage={currentLanguage} />
+      <Footer currentLanguage={currentLanguage} />
     </main>
   )
 }
