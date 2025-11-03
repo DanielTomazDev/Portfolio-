@@ -16,6 +16,7 @@ interface Project {
   image: string
   githubUrl?: string
   liveUrl?: string
+  screenshots?: string[]
 }
 
 export default function ProjectDetails() {
@@ -34,7 +35,12 @@ export default function ProjectDetails() {
       icon: 'fas fa-shopping-cart',
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
       githubUrl: '#',
-      liveUrl: '#'
+      liveUrl: '#',
+      screenshots: [
+        '/projects/ecommerce/homepage.png',
+        '/projects/ecommerce/product-detail.png',
+        '/projects/ecommerce/product-list.png'
+      ]
     },
     {
       id: 1,
@@ -101,7 +107,9 @@ export default function ProjectDetails() {
       technologies: 'Tecnologias',
       projectDescription: 'Descrição do Projeto',
       features: 'Funcionalidades',
-      notFound: 'Projeto não encontrado'
+      notFound: 'Projeto não encontrado',
+      screenshots: 'Screenshots do Projeto',
+      gallery: 'Galeria'
     },
     en: {
       backButton: 'Back',
@@ -110,7 +118,9 @@ export default function ProjectDetails() {
       technologies: 'Technologies',
       projectDescription: 'Project Description',
       features: 'Features',
-      notFound: 'Project not found'
+      notFound: 'Project not found',
+      screenshots: 'Project Screenshots',
+      gallery: 'Gallery'
     }
   }
 
@@ -287,12 +297,60 @@ export default function ProjectDetails() {
               </div>
             </motion.div>
 
+            {/* Galeria de Screenshots */}
+            {project.screenshots && project.screenshots.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="mb-12"
+              >
+                <h2 className="text-3xl font-bold mb-6 text-primary-blue">
+                  {currentContent.screenshots}
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {project.screenshots.map((screenshot, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      className="group relative rounded-xl overflow-hidden shadow-xl cursor-pointer hover:shadow-2xl transition-all duration-300"
+                    >
+                      <div className="aspect-video relative overflow-hidden bg-gradient-to-br from-gray-800 to-black">
+                        <img 
+                          src={screenshot} 
+                          alt={`${project.title} - Screenshot ${index + 1}`}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement
+                            target.style.display = 'none'
+                            target.parentElement!.innerHTML = `
+                              <div class="w-full h-full flex items-center justify-center text-gray-500">
+                                <i class="fas fa-image text-4xl"></i>
+                              </div>
+                            `
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <i className="fas fa-search-plus text-3xl text-white" />
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
             {/* Imagem Grande do Projeto */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
               className="mb-12"
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
