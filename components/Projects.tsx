@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 interface ProjectsProps {
   currentLanguage: string
@@ -168,59 +169,61 @@ export default function Projects({ currentLanguage }: ProjectsProps) {
             {projects.map((project, index) => (
               <div key={index} className="flex-shrink-0 w-48 sm:w-56 md:w-64 group">
                 {/* Card da imagem */}
-                <motion.div
-                className={`bg-black rounded-2xl overflow-hidden shadow-[0_30px_60px_-12px_rgba(0,0,0,0.6)] hover:shadow-[0_40px_80px_-16px_rgba(0,0,0,0.7)] transition-all duration-300 cursor-pointer relative ${
-                    index === currentIndex ? 'scale-110' : 'hover:scale-110'
-                  }`}
-                  style={{ scrollSnapAlign: 'start' }}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ 
-                    opacity: 1, 
-                    y: index === currentIndex ? -8 : 0,
-                    scale: index === currentIndex ? 1.1 : 1
-                  }}
-                  whileHover={{ 
-                    y: index === currentIndex ? -8 : -6,
-                    scale: index === currentIndex ? 1.15 : 1.05,
-                    rotateY: 5,
-                    boxShadow: "0 25px 50px -12px rgb(2, 2, 3)"
-                  }}
-                  transition={{ 
-                    duration: 0.3, 
-                    ease: "easeOut",
-                    delay: index * 0.1
-                  }}
-                >
-                  {/* Imagem do projeto */}
-                  <div className="h-56 relative overflow-hidden bg-gradient-to-br from-gray-800 to-black">
-                    {/* Imagem de fundo - aparece no hover ou quando destacado */}
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110 ${
+                <Link href={`/project/${index}`}>
+                  <motion.div
+                  className={`bg-black rounded-2xl overflow-hidden shadow-[0_30px_60px_-12px_rgba(0,0,0,0.6)] hover:shadow-[0_40px_80px_-16px_rgba(0,0,0,0.7)] transition-all duration-300 cursor-pointer relative ${
+                      index === currentIndex ? 'scale-110' : 'hover:scale-110'
+                    }`}
+                    style={{ scrollSnapAlign: 'start' }}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ 
+                      opacity: 1, 
+                      y: index === currentIndex ? -8 : 0,
+                      scale: index === currentIndex ? 1.1 : 1
+                    }}
+                    whileHover={{ 
+                      y: index === currentIndex ? -8 : -6,
+                      scale: index === currentIndex ? 1.15 : 1.05,
+                      rotateY: 5,
+                      boxShadow: "0 25px 50px -12px rgb(2, 2, 3)"
+                    }}
+                    transition={{ 
+                      duration: 0.3, 
+                      ease: "easeOut",
+                      delay: index * 0.1
+                    }}
+                  >
+                    {/* Imagem do projeto */}
+                    <div className="h-56 relative overflow-hidden bg-gradient-to-br from-gray-800 to-black">
+                      {/* Imagem de fundo - aparece no hover ou quando destacado */}
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110 ${
+                          index === currentIndex 
+                            ? 'opacity-100 scale-105' 
+                            : 'opacity-0 group-hover:opacity-100'
+                        }`}
+                      />
+                      
+                      {/* Ícone central - sempre visível, mas com transparência quando destacado */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <i className={`${project.icon} text-6xl sm:text-7xl text-white transition-all duration-500 group-hover:scale-125 group-hover:rotate-12 group-hover:drop-shadow-2xl ${
+                          index === currentIndex 
+                            ? 'opacity-70 group-hover:opacity-90' 
+                            : 'opacity-100 group-hover:opacity-90'
+                        }`} />
+                      </div>
+                      
+                      {/* Overlay gradiente */}
+                      <div className={`absolute inset-0 transition-all duration-500 ${
                         index === currentIndex 
-                          ? 'opacity-100 scale-105' 
-                          : 'opacity-0 group-hover:opacity-100'
-                      }`}
-                    />
-                    
-                    {/* Ícone central - sempre visível, mas com transparência quando destacado */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <i className={`${project.icon} text-6xl sm:text-7xl text-white transition-all duration-500 group-hover:scale-125 group-hover:rotate-12 group-hover:drop-shadow-2xl ${
-                        index === currentIndex 
-                          ? 'opacity-70 group-hover:opacity-90' 
-                          : 'opacity-100 group-hover:opacity-90'
+                          ? 'bg-gradient-to-t from-black/60 to-transparent group-hover:from-black/40' 
+                          : 'bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/60'
                       }`} />
                     </div>
-                    
-                    {/* Overlay gradiente */}
-                    <div className={`absolute inset-0 transition-all duration-500 ${
-                      index === currentIndex 
-                        ? 'bg-gradient-to-t from-black/60 to-transparent group-hover:from-black/40' 
-                        : 'bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/60'
-                    }`} />
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </Link>
 
                 {/* Informações abaixo do card - Aparecem no hover ou quando destacado */}
                 <div className={`mt-4 px-2 transition-all duration-500 delay-150 pointer-events-none ${
@@ -264,14 +267,17 @@ export default function Projects({ currentLanguage }: ProjectsProps) {
                     ))}
                   </div>
                   
-                  <button className={`w-full bg-primary-blue hover:bg-primary-blue-dark text-white py-2 px-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 group transform transition-all duration-400 delay-600 ${
-                    index === currentIndex 
-                      ? 'translate-y-0' 
-                      : 'translate-y-5 group-hover:translate-y-0'
-                  }`}>
+                  <Link 
+                    href={`/project/${index}`}
+                    className={`w-full bg-primary-blue hover:bg-primary-blue-dark text-white py-2 px-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 group transform transition-all duration-400 delay-600 flex items-center justify-center ${
+                      index === currentIndex 
+                        ? 'translate-y-0' 
+                        : 'translate-y-5 group-hover:translate-y-0'
+                    }`}
+                  >
                     {currentLanguage === 'pt' ? 'Ver Projeto' : 'View Project'}
                     <i className="fas fa-external-link-alt ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
